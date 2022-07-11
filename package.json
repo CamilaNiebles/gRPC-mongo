@@ -1,0 +1,21 @@
+{
+  "name": "mongo-implementation",
+  "version": "1.0.0",
+  "main": "index.js",
+  "keywords": [],
+  "author": "CNieblesR",
+  "license": "ISC",
+  "scripts": {
+    "pb:gen": "./scripts/gen.sh",
+    "server": "node server/index.js",
+    "client": "node client/index.js",
+    "blog:db": "docker-compose up"
+  },
+  "dependencies": {
+    "@grpc/grpc-js": "^1.6.7",
+    "google-protobuf": "^3.20.1"
+  },
+  "devDependencies": {
+    "grpc-tools": "^1.11.2"
+  }
+}
