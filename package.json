@@ -6,7 +6,7 @@
   "author": "CNieblesR",
   "license": "ISC",
   "scripts": {
-    "pb:gen": "./scripts/gen.sh",
+    "pb:gen": "./scripts/gen.sh blog",
     "server": "node server/index.js",
     "client": "node client/index.js",
     "blog:db": "docker-compose up"
