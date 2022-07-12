@@ -1,5 +1,5 @@
 const grpc = require('@grpc/grpc-js')
-// const { GreetSeviceService } = require('../proto/greet_grpc_pb')
+const { BlogServiceService } = require('../proto/blog_grpc_pb')
 const mongoInit = require('./mongo/mongo.configuration')
 const serviceImplementation = require('./service.implementation')
 
@@ -21,7 +21,7 @@ async function main() {
   })
 
   /** Add a specific service to the server. */
-  //   server.addService(GreetSeviceService, serviceImplementation)
+  server.addService(BlogServiceService, serviceImplementation)
 
   server.bindAsync(address, credentials, (error, _) => {
     error ? cleanUp(server) : server.start()

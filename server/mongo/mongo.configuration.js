@@ -1,6 +1,6 @@
 const { MongoClient } = require('mongodb')
 
-const uri = 'mongodb://localhost:27017'
+const uri = 'mongodb://root:root@localhost:27017'
 const mongoClient = new MongoClient(uri)
 
 global.collection = undefined

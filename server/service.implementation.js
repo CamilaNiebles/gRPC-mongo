@@ -1,5 +1,5 @@
 const grpc = require('@grpc/grpc-js')
-const { Blog, BlogId } = require('../proto/blog_pb')
+const grpc_pb = require('../proto/blog_pb')
 const { createOne } = require('./mongo/transactions')
 
 function blogToDocument(blog) {
@@ -11,7 +11,7 @@ function blogToDocument(blog) {
 }
 
 function documentToBlog(doc) {
-  return new Blog()
+  return new grpc_pb.Blog()
     .setId(doc._id.toString())
     .setAuthorId(doc.author_id)
     .setTitle(doc.title)
@@ -37,9 +37,7 @@ exports.createBlog = async (call, callback) => {
   const data = blogToDocument(call.request)
   const document = await createOne(data)
   checkNotAcknowledged(document, callback)
-  const {
-    insertedId: { id }
-  } = document
-  const blogId = new BlogId().setId(id)
+  const { insertedId } = document
+  const blogId = new grpc_pb.BlogId().setId(insertedId)
   callback(null, blogId)
 }
